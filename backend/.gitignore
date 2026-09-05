@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+*.tsbuildinfo
+
+# Test coverage
+coverage/
+
+# Environment (committed: .env.example)
+.env
+.env.*
+!.env.example
+
+# Linting / formatting cache
+.eslintcache
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Prisma
+prisma/*.db
+/src/generated/prisma
