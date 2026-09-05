@@ -1,5 +1,5 @@
 import { HttpStatus } from '@nestjs/common';
-import { toHttpStatus } from './http-error.js';
+import { codeForStatus, toHttpStatus } from './http-error.js';
 
 describe('toHttpStatus', () => {
   it('maps business codes to the expected HTTP statuses', () => {
@@ -21,5 +21,17 @@ describe('toHttpStatus', () => {
 
   it('maps unknown codes to internal server error', () => {
     expect(toHttpStatus('RANDOM_CODE')).toBe(HttpStatus.INTERNAL_SERVER_ERROR);
+  });
+});
+
+describe('codeForStatus', () => {
+  it('maps HTTP statuses to generic codes', () => {
+    expect(codeForStatus(HttpStatus.BAD_REQUEST)).toBe('BAD_REQUEST');
+    expect(codeForStatus(HttpStatus.NOT_FOUND)).toBe('NOT_FOUND');
+    expect(codeForStatus(HttpStatus.FORBIDDEN)).toBe('FORBIDDEN');
+  });
+
+  it('falls back to HTTP_ERROR for unknown statuses', () => {
+    expect(codeForStatus(599)).toBe('HTTP_ERROR');
   });
 });

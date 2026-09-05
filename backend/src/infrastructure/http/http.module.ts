@@ -1,8 +1,9 @@
 import { Module } from '@nestjs/common';
-import { APP_PIPE } from '@nestjs/core';
+import { APP_FILTER, APP_PIPE } from '@nestjs/core';
 import { PersistenceModule } from '../persistence/persistence.module.js';
 import { PaymentGatewayModule } from '../payment-gateway/payment-gateway.module.js';
 import { buildValidationPipe } from './validation/validation.pipe.js';
+import { AllExceptionsFilter } from './filters/all-exceptions.filter.js';
 import {
   CUSTOMER_REPOSITORY,
   DELIVERY_REPOSITORY,
@@ -41,6 +42,7 @@ import { DeliveriesController } from './deliveries.controller.js';
     DeliveriesController,
   ],
   providers: [
+    { provide: APP_FILTER, useClass: AllExceptionsFilter },
     { provide: APP_PIPE, useFactory: () => buildValidationPipe() },
     {
       provide: CreateTransactionUseCase,
