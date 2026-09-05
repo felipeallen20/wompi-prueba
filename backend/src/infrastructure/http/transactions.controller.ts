@@ -2,8 +2,8 @@ import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { CreateTransactionUseCase } from '../../application/create-transaction/create-transaction.use-case.js';
 import { GetTransactionUseCase } from '../../application/get-transaction/get-transaction.use-case.js';
 import { ProcessCheckoutUseCase } from '../../application/process-checkout/process-checkout.use-case.js';
-import type { CreateTransactionDto } from './dto/create-transaction.dto.js';
-import type { ProcessPaymentDto } from './dto/process-payment.dto.js';
+import { CreateTransactionDto } from './dto/create-transaction.dto.js';
+import { ProcessPaymentDto } from './dto/process-payment.dto.js';
 import { unwrapOrThrow } from './utils/result-http.js';
 
 @Controller('transactions')

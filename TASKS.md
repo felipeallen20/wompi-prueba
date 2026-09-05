@@ -31,7 +31,7 @@ completed. Grouped by area; order within a group is roughly execution order.
 - [x] Repository adapters (Prisma) implementing the domain ports
 - [x] Payment gateway sandbox adapter implementing the PaymentGateway port
 - [x] REST controllers: products, customers, transactions, deliveries
-- [ ] Input validation (DTOs) on every endpoint
+- [x] Input validation (DTOs) on every endpoint
 - [ ] Error handling middleware / consistent error responses
 - [ ] Security headers middleware
 - [ ] Postman collection or Swagger docs published

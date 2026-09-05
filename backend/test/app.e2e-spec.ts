@@ -23,7 +23,7 @@ describe('HttpModule (e2e)', () => {
       .overrideProvider(TRANSACTION_REPOSITORY)
       .useValue({})
       .overrideProvider(CUSTOMER_REPOSITORY)
-      .useValue({})
+      .useValue({ save: async (customer: unknown) => customer })
       .overrideProvider(DELIVERY_REPOSITORY)
       .useValue({})
       .overrideProvider(PAYMENT_GATEWAY)
@@ -39,6 +39,32 @@ describe('HttpModule (e2e)', () => {
       .get('/health')
       .expect(200)
       .expect({ status: 'ok' });
+  });
+
+  it('/customers (POST) creates a customer', () => {
+    return request(app.getHttpServer())
+      .post('/customers')
+      .send({
+        fullName: 'Ada Lovelace',
+        email: 'ada@example.com',
+        phone: '+57 300 000 0000',
+      })
+      .expect(201)
+      .expect(({ body }) => {
+        expect(body.fullName).toBe('Ada Lovelace');
+        expect(body.id).toBeDefined();
+      });
+  });
+
+  it('/customers (POST) rejects invalid input with a consistent body', () => {
+    return request(app.getHttpServer())
+      .post('/customers')
+      .send({ fullName: '', email: 'not-an-email', phone: '' })
+      .expect(400)
+      .expect(({ body }) => {
+        expect(body).toMatchObject({ statusCode: 400, code: 'INVALID_INPUT' });
+        expect(body.message).toContain('email');
+      });
   });
 
   afterAll(async () => {
