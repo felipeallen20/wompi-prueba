@@ -16,7 +16,7 @@ completed. Grouped by area; order within a group is roughly execution order.
 ## Backend — Domain & Application
 - [x] Define entities: Product, Stock, Customer, Delivery, Transaction
 - [x] Define value objects: Money, TransactionStatus, CardBrand
-- [ ] Define ports: ProductRepository, TransactionRepository,
+- [x] Define ports: ProductRepository, TransactionRepository,
       CustomerRepository, DeliveryRepository, PaymentGateway
 - [ ] Implement the Result type for ROP (Ok/Err, map/flatMap/andThen)
 - [ ] Use case: CreateTransaction (status PENDING)
