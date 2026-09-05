@@ -22,3 +22,17 @@ const CODE_TO_STATUS: Readonly<Record<string, HttpStatus>> = {
 export function toHttpStatus(code: string): number {
   return CODE_TO_STATUS[code] ?? HttpStatus.INTERNAL_SERVER_ERROR;
 }
+
+const STATUS_TO_CODE: Readonly<Record<number, string>> = {
+  [HttpStatus.BAD_REQUEST]: 'BAD_REQUEST',
+  [HttpStatus.UNAUTHORIZED]: 'UNAUTHORIZED',
+  [HttpStatus.FORBIDDEN]: 'FORBIDDEN',
+  [HttpStatus.NOT_FOUND]: 'NOT_FOUND',
+  [HttpStatus.METHOD_NOT_ALLOWED]: 'METHOD_NOT_ALLOWED',
+  [HttpStatus.CONFLICT]: 'CONFLICT',
+  [HttpStatus.UNPROCESSABLE_ENTITY]: 'UNPROCESSABLE_ENTITY',
+};
+
+export function codeForStatus(status: number): string {
+  return STATUS_TO_CODE[status] ?? 'HTTP_ERROR';
+}

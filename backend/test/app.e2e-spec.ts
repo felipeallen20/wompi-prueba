@@ -41,6 +41,15 @@ describe('HttpModule (e2e)', () => {
       .expect({ status: 'ok' });
   });
 
+  it('/unknown (GET) returns a consistent 404 body', () => {
+    return request(app.getHttpServer())
+      .get('/does-not-exist')
+      .expect(404)
+      .expect(({ body }) => {
+        expect(body).toMatchObject({ statusCode: 404, code: 'NOT_FOUND' });
+      });
+  });
+
   it('/customers (POST) creates a customer', () => {
     return request(app.getHttpServer())
       .post('/customers')
