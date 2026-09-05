@@ -18,7 +18,7 @@ export class CreateTransactionUseCase {
   async execute(
     command: CreateTransactionCommand,
   ): Promise<Result<Transaction, CreateTransactionError>> {
-    if (!isNonEmpty(command.productId) || !isNonEmpty(command.customerId)) {
+    if (!hasValidInput(command)) {
       return Result.err<Transaction, CreateTransactionError>({
         code: 'INVALID_INPUT',
         message: 'productId and customerId are required',
@@ -53,6 +53,13 @@ export class CreateTransactionUseCase {
   }
 }
 
-function isNonEmpty(value: string): boolean {
-  return value.trim().length > 0;
+function hasValidInput(command: CreateTransactionCommand): boolean {
+  return (
+    isNonEmptyString(command?.productId) &&
+    isNonEmptyString(command?.customerId)
+  );
+}
+
+function isNonEmptyString(value: unknown): boolean {
+  return typeof value === 'string' && value.trim().length > 0;
 }
