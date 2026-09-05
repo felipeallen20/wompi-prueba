@@ -1,4 +1,4 @@
-export type TransactionStatus = 'PENDING' | 'APPROVED' | 'DECLINED' | 'ERROR';
+import { TransactionStatus } from '../value-objects/transaction-status.js';
 
 export class Transaction {
   constructor(
