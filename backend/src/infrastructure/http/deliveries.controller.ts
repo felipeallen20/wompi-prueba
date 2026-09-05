@@ -1,6 +1,6 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { CreateDeliveryUseCase } from '../../application/create-delivery/create-delivery.use-case.js';
-import type { CreateDeliveryDto } from './dto/create-delivery.dto.js';
+import { CreateDeliveryDto } from './dto/create-delivery.dto.js';
 import { unwrapOrThrow } from './utils/result-http.js';
 
 @Controller('deliveries')

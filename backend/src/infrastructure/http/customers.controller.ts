@@ -1,6 +1,6 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { CreateCustomerUseCase } from '../../application/create-customer/create-customer.use-case.js';
-import type { CreateCustomerDto } from './dto/create-customer.dto.js';
+import { CreateCustomerDto } from './dto/create-customer.dto.js';
 import { unwrapOrThrow } from './utils/result-http.js';
 
 @Controller('customers')
