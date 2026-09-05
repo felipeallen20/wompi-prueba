@@ -20,7 +20,7 @@ completed. Grouped by area; order within a group is roughly execution order.
       CustomerRepository, DeliveryRepository, PaymentGateway
 - [x] Implement the Result type for ROP (Ok/Err, map/flatMap/andThen)
 - [x] Use case: CreateTransaction (status PENDING)
-- [ ] Use case: ProcessPayment (calls the gateway, updates status)
+- [x] Use case: ProcessPayment (calls the gateway, updates status)
 - [ ] Use case: UpdateStock (on approved payment)
 - [ ] Use case: AssignDelivery
 - [ ] Unit tests for every use case (happy path + failure paths)
