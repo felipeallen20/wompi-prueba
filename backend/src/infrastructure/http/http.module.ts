@@ -134,6 +134,19 @@ import { DeliveriesController } from './deliveries.controller.js';
 })
 export class HttpModule implements NestModule {
   configure(consumer: MiddlewareConsumer): void {
-    consumer.apply(helmet()).forRoutes('*');
+    consumer
+      .apply(
+        helmet({
+          contentSecurityPolicy: {
+            directives: {
+              defaultSrc: ["'self'"],
+              objectSrc: ["'none'"],
+              scriptSrc: ["'self'", "'unsafe-inline'"],
+              styleSrc: ["'self'", "'unsafe-inline'"],
+            },
+          },
+        }),
+      )
+      .forRoutes('*');
   }
 }

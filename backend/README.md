@@ -25,6 +25,15 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+Checkout backend API — products, customers, deliveries and transactions with a
+sandbox payment gateway. The backend is the single source of truth for prices,
+fees, totals, stock and transaction status.
+
+## API documentation
+
+Interactive API documentation (Swagger UI) is served at `/api-docs` and the
+raw OpenAPI document at `/api-docs-json`.
+
 ## Project setup
 
 ```bash
