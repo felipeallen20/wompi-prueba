@@ -22,7 +22,7 @@ completed. Grouped by area; order within a group is roughly execution order.
 - [x] Use case: CreateTransaction (status PENDING)
 - [x] Use case: ProcessPayment (calls the gateway, updates status)
 - [x] Use case: UpdateStock (on approved payment)
-- [ ] Use case: AssignDelivery
+- [x] Use case: AssignDelivery
 - [ ] Unit tests for every use case (happy path + failure paths)
 
 ## Backend — Infrastructure
