@@ -50,4 +50,40 @@ describe('Transaction', () => {
     expect(transaction.deliveryId).toBeNull();
     expect(transaction.gatewayReference).toBeNull();
   });
+
+  it('updates the payment result keeping immutable fields', () => {
+    const createdAt = new Date('2026-09-05T10:00:00Z');
+    const processedAt = new Date('2026-09-05T10:05:00Z');
+    const transaction = new Transaction(
+      'transaction-3',
+      'product-1',
+      'customer-1',
+      'delivery-1',
+      'PENDING',
+      45000,
+      2000,
+      8000,
+      null,
+      createdAt,
+      createdAt,
+    );
+
+    const updated = transaction.updatePaymentResult(
+      'APPROVED',
+      'gateway-ref-3',
+      processedAt,
+    );
+
+    expect(updated.id).toBe(transaction.id);
+    expect(updated.productId).toBe(transaction.productId);
+    expect(updated.customerId).toBe(transaction.customerId);
+    expect(updated.deliveryId).toBe(transaction.deliveryId);
+    expect(updated.status).toBe('APPROVED');
+    expect(updated.amount).toBe(transaction.amount);
+    expect(updated.baseFee).toBe(transaction.baseFee);
+    expect(updated.deliveryFee).toBe(transaction.deliveryFee);
+    expect(updated.gatewayReference).toBe('gateway-ref-3');
+    expect(updated.createdAt).toBe(createdAt);
+    expect(updated.updatedAt).toBe(processedAt);
+  });
 });
