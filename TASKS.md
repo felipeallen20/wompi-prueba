@@ -21,7 +21,7 @@ completed. Grouped by area; order within a group is roughly execution order.
 - [x] Implement the Result type for ROP (Ok/Err, map/flatMap/andThen)
 - [x] Use case: CreateTransaction (status PENDING)
 - [x] Use case: ProcessPayment (calls the gateway, updates status)
-- [ ] Use case: UpdateStock (on approved payment)
+- [x] Use case: UpdateStock (on approved payment)
 - [ ] Use case: AssignDelivery
 - [ ] Unit tests for every use case (happy path + failure paths)
 
