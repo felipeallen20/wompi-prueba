@@ -23,10 +23,10 @@ completed. Grouped by area; order within a group is roughly execution order.
 - [x] Use case: ProcessPayment (calls the gateway, updates status)
 - [x] Use case: UpdateStock (on approved payment)
 - [x] Use case: AssignDelivery
-- [ ] Unit tests for every use case (happy path + failure paths)
+- [x] Unit tests for every use case (happy path + failure paths)
 
 ## Backend — Infrastructure
-- [ ] PostgreSQL schema/migrations (Prisma)
+- [x] PostgreSQL schema/migrations (Prisma)
 - [ ] Seed script with dummy products
 - [ ] Repository adapters (Prisma) implementing the domain ports
 - [ ] Payment gateway sandbox adapter implementing the PaymentGateway port

@@ -6,7 +6,7 @@ import globals from 'globals';
 
 export default tseslint.config(
   {
-    ignores: ['dist/**', 'node_modules/**', 'coverage/**', 'prisma/**'],
+    ignores: ['dist/**', 'node_modules/**', 'coverage/**', 'prisma/**', 'src/generated/**'],
   },
   eslint.configs.recommended,
   ...tseslint.configs.recommended,
