@@ -29,7 +29,7 @@ completed. Grouped by area; order within a group is roughly execution order.
 - [x] PostgreSQL schema/migrations (Prisma)
 - [x] Seed script with dummy products
 - [x] Repository adapters (Prisma) implementing the domain ports
-- [ ] Payment gateway sandbox adapter implementing the PaymentGateway port
+- [x] Payment gateway sandbox adapter implementing the PaymentGateway port
 - [ ] REST controllers: products, customers, transactions, deliveries
 - [ ] Input validation (DTOs) on every endpoint
 - [ ] Error handling middleware / consistent error responses
