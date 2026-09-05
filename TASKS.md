@@ -27,7 +27,7 @@ completed. Grouped by area; order within a group is roughly execution order.
 
 ## Backend — Infrastructure
 - [x] PostgreSQL schema/migrations (Prisma)
-- [ ] Seed script with dummy products
+- [x] Seed script with dummy products
 - [ ] Repository adapters (Prisma) implementing the domain ports
 - [ ] Payment gateway sandbox adapter implementing the PaymentGateway port
 - [ ] REST controllers: products, customers, transactions, deliveries
