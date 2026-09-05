@@ -1,5 +1,6 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { APP_FILTER, APP_PIPE } from '@nestjs/core';
+import helmet from 'helmet';
 import { PersistenceModule } from '../persistence/persistence.module.js';
 import { PaymentGatewayModule } from '../payment-gateway/payment-gateway.module.js';
 import { buildValidationPipe } from './validation/validation.pipe.js';
@@ -131,4 +132,8 @@ import { DeliveriesController } from './deliveries.controller.js';
     },
   ],
 })
-export class HttpModule {}
+export class HttpModule implements NestModule {
+  configure(consumer: MiddlewareConsumer): void {
+    consumer.apply(helmet()).forRoutes('*');
+  }
+}
