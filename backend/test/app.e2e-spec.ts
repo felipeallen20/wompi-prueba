@@ -3,6 +3,7 @@ import { INestApplication } from '@nestjs/common';
 import request from 'supertest';
 import { App } from 'supertest/types';
 import { HttpModule } from '../src/infrastructure/http/http.module.js';
+import { setupSwagger } from '../src/infrastructure/documentation/swagger.js';
 import {
   CUSTOMER_REPOSITORY,
   DELIVERY_REPOSITORY,
@@ -31,6 +32,7 @@ describe('HttpModule (e2e)', () => {
       .compile();
 
     app = moduleFixture.createNestApplication();
+    setupSwagger(app);
     await app.init();
   });
 
@@ -82,6 +84,27 @@ describe('HttpModule (e2e)', () => {
       .expect(({ body }) => {
         expect(body).toMatchObject({ statusCode: 400, code: 'INVALID_INPUT' });
         expect(body.message).toContain('email');
+      });
+  });
+
+  it('/api-docs (GET) serves the Swagger UI', () => {
+    return request(app.getHttpServer())
+      .get('/api-docs')
+      .expect(200)
+      .expect('content-type', /text\/html/);
+  });
+
+  it('/api-docs-json (GET) exposes the OpenAPI document', () => {
+    return request(app.getHttpServer())
+      .get('/api-docs-json')
+      .expect(200)
+      .expect(({ body }) => {
+        expect(body.openapi).toMatch(/^3\./);
+        expect(body.info.title).toBe('Checkout API');
+        expect(body.paths['/products']).toBeDefined();
+        expect(
+          body.paths['/transactions/{id}/process'].post.responses,
+        ).toBeDefined();
       });
   });
 

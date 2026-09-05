@@ -34,7 +34,7 @@ completed. Grouped by area; order within a group is roughly execution order.
 - [x] Input validation (DTOs) on every endpoint
 - [x] Error handling middleware / consistent error responses
 - [x] Security headers middleware
-- [ ] Postman collection or Swagger docs published
+- [x] Postman collection or Swagger docs published
 
 ## Frontend — Screens
 - [ ] Product page (list + stock + price + description)
