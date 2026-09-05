@@ -72,6 +72,20 @@ describe('Result', () => {
     });
   });
 
+  describe('getError', () => {
+    it('returns the error of an err result', () => {
+      const result = Result.err<number, string>('something went wrong');
+
+      expect(result.getError()).toBe('something went wrong');
+    });
+
+    it('returns undefined for an ok result', () => {
+      const result = Result.ok<number, string>(42);
+
+      expect(result.getError()).toBeUndefined();
+    });
+  });
+
   describe('unwrapOr', () => {
     it('returns the value of an ok result', () => {
       const result = Result.ok<number, string>(42);

@@ -26,6 +26,10 @@ export class Result<T, E> {
     return this.kind === 'err';
   }
 
+  getError(): E | undefined {
+    return this.error;
+  }
+
   map<U>(fn: (value: T) => U): Result<U, E> {
     if (this.kind === 'err') {
       return Result.err<U, E>(this.error as E);
