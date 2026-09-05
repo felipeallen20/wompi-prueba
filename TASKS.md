@@ -14,7 +14,7 @@ completed. Grouped by area; order within a group is roughly execution order.
       (this set)
 
 ## Backend — Domain & Application
-- [ ] Define entities: Product, Stock, Customer, Delivery, Transaction
+- [x] Define entities: Product, Stock, Customer, Delivery, Transaction
 - [ ] Define value objects: Money, TransactionStatus, CardBrand
 - [ ] Define ports: ProductRepository, TransactionRepository,
       CustomerRepository, DeliveryRepository, PaymentGateway
