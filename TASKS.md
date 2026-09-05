@@ -33,7 +33,7 @@ completed. Grouped by area; order within a group is roughly execution order.
 - [x] REST controllers: products, customers, transactions, deliveries
 - [x] Input validation (DTOs) on every endpoint
 - [x] Error handling middleware / consistent error responses
-- [ ] Security headers middleware
+- [x] Security headers middleware
 - [ ] Postman collection or Swagger docs published
 
 ## Frontend — Screens

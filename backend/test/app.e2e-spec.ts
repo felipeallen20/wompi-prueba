@@ -41,6 +41,15 @@ describe('HttpModule (e2e)', () => {
       .expect({ status: 'ok' });
   });
 
+  it('/health carries security headers', () => {
+    return request(app.getHttpServer())
+      .get('/health')
+      .expect('x-content-type-options', 'nosniff')
+      .expect('x-frame-options', 'SAMEORIGIN')
+      .expect('referrer-policy', 'no-referrer')
+      .expect('content-security-policy', /default-src/);
+  });
+
   it('/unknown (GET) returns a consistent 404 body', () => {
     return request(app.getHttpServer())
       .get('/does-not-exist')
