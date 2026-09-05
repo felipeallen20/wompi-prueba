@@ -87,21 +87,24 @@ export class ProcessPaymentUseCase {
 }
 
 function hasValidInput(command: ProcessPaymentCommand): boolean {
-  const cardNumber = command.cardNumber.replace(/\s+/g, '');
+  const cardNumber =
+    typeof command?.cardNumber === 'string'
+      ? command.cardNumber.replace(/\s+/g, '')
+      : '';
   const currentYear = new Date().getFullYear();
   return (
-    isNonEmpty(command.transactionId) &&
+    isNonEmptyString(command?.transactionId) &&
     CARD_NUMBER_PATTERN.test(cardNumber) &&
-    Number.isInteger(command.cardExpiryMonth) &&
-    command.cardExpiryMonth >= 1 &&
-    command.cardExpiryMonth <= 12 &&
-    Number.isInteger(command.cardExpiryYear) &&
-    command.cardExpiryYear >= currentYear &&
-    command.cardExpiryYear <= currentYear + CARD_EXPIRY_MAX_HORIZON_YEARS &&
-    CVV_PATTERN.test(command.cardCvv)
+    Number.isInteger(command?.cardExpiryMonth) &&
+    command?.cardExpiryMonth >= 1 &&
+    command?.cardExpiryMonth <= 12 &&
+    Number.isInteger(command?.cardExpiryYear) &&
+    command?.cardExpiryYear >= currentYear &&
+    command?.cardExpiryYear <= currentYear + CARD_EXPIRY_MAX_HORIZON_YEARS &&
+    CVV_PATTERN.test(command?.cardCvv ?? '')
   );
 }
 
-function isNonEmpty(value: string): boolean {
-  return value.trim().length > 0;
+function isNonEmptyString(value: unknown): boolean {
+  return typeof value === 'string' && value.trim().length > 0;
 }
